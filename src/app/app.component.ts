@@ -41,6 +41,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.initForm();
+        if (!this.config.clientId) {
+            return;
+        }
         this.adalService.checkCallback(window.location.hash, this.config);
         if (this.adalService.getUser(this.config)) {
             this.subscription = this.adalService.handlerCallback(this.config).subscribe((token: string) => {
