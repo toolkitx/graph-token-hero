@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.configInstance = cache ? JSON.parse(cache) : <Config> {
                 clientId: '',
                 resource: 'https://graph.microsoft.com',
-                scope: 'openid+profile'
+                scope: 'openid profile'
             };
         }
         return this.configInstance;
