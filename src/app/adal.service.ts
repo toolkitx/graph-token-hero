@@ -18,7 +18,7 @@ export class AdalService {
             redirectUri: window.location.origin,
             cacheLocation: 'localStorage',
             navigateToLoginRequestUrl: true,
-            extraQueryParameter: `prompt=consent&scope=${config.scope}`
+            extraQueryParameter: `scope=${config.scope}`
         };
         return new AuthenticationContext(conf);
     }

@@ -6,12 +6,12 @@
                     <img class="d-block mx-auto mb-4" src="https://www.toolkitx.net/logo.png" alt="" height="50px">
                     <h3 class="mb-5 text-uppercase">Graph Token Hero</h3>
                     <p class="text-muted text-left">
-                        Before using ADAL JS, follow the instructions to <a target="_blank" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications">register your application</a> on the Azure portal.
+                        Before using Graph Token Hero, follow the instructions to <a target="_blank" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications">register your application</a> on the Azure portal.
                         Also, make sure to enable the <a target="_blank" href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-oauth2-implicit-grant-flow">OAuth 2.0 implicit flow</a> by setting the property
-                        oauth2AllowImplicitFlow to true by editing your application manifest on the portal. Implicit
+                        oauth2AllowImplicitFlow to true by editing your application manifest on the portal, thirdly add <span class="text-monospace">http://graph-token-hero.toolkitx.net</span> to Redirect URLs. Implicit
                         flow is used by ADAL JS to get tokens.
                     </p>
-                </div>
+                </div>URLs
                 <form class="form" [formGroup]="form">
                     <div class="form-group">
                         <label>Client Id</label>
@@ -30,7 +30,11 @@
                     </button>
                 </form>
             </div>
-
+            <div class="p-5" *ngIf="pending">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </div>
             <div class="p-5" *ngIf="token.decoded">
                 <h5>Decoded token: </h5>
                 <pre class="decoded-token text-muted">

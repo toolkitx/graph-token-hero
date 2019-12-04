@@ -15,6 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
     token: { encoded: string; decoded: string; } = { encoded: null, decoded: null };
     cacheKey = 'tx.graph.hero.config';
     form: FormGroup;
+    pending = false;
 
     private configInstance: Config;
 
@@ -40,16 +41,20 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.pending = false;
         this.initForm();
         if (!this.config.clientId) {
             return;
-        }
+        } 
         this.adalService.checkCallback(window.location.hash, this.config);
         if (this.adalService.getUser(this.config)) {
+            this.pending = true;
             this.subscription = this.adalService.handlerCallback(this.config).subscribe((token: string) => {
+                this.pending = false;
                 this.token.encoded = token;
                 this.token.decoded = JSON.stringify(jwt_decode(token), null, 4);
             }, (err) => {
+                this.pending = false;
                 console.log(err);
             });
         }

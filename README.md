@@ -1,27 +1,18 @@
-# GraphTokenHero
+## Graph Token Hero
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+A light weight toolkit to help you obtain Graph token with specified permission.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Prerequisite
 
-## Code scaffolding
+Before using this toolkit, follow the instructions:
+1. [Register your application](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications) on the Azure portal.
+2. Make sure to enable the [OAuth 2.0 implicit flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-oauth2-implicit-grant-flow) by setting the property `oauth2AllowImplicitFlow` to true by editing your application manifest on the portal. Implicit flow is used by ADAL JS to get tokens.
+3. Add Redirect URI `http://graph-token-hero.toolkitx.net` to the app your created in step 1.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1. Enter your client id and click `Request Token`.
+2. Enter your credentials, then you will be redirected back to home page, please wait a few second while obtaining token from AAD. 
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
