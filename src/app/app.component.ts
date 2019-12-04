@@ -62,7 +62,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     requestToken() {
-        this.adalService.requestToken(this.config);
+        if (this.config.clientId) {
+            this.adalService.requestToken(this.config);
+        }
     }
 
     private initForm() {
